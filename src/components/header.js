@@ -27,7 +27,7 @@ const Header = ({ siteTitle }) => (
         <div style={{ width: "200px", float: "center" }}>
           <ButtonGroup vertical>
             <li>
-              <Button style={{ width: "200px" }}>
+              <Button variant="danger" style={{ width: "200px" }}>
                 <img
                   src={IronMan}
                   style={{ width: "200px", borderRadius: "100px" }}
@@ -36,7 +36,7 @@ const Header = ({ siteTitle }) => (
               </Button>
             </li>
             <li>
-              <Button style={{ width: "200px" }}>
+              <Button variant="danger" style={{ width: "200px" }}>
                 <img
                   src={DrDoom}
                   style={{ width: "200px", borderRadius: "100px" }}
@@ -45,7 +45,7 @@ const Header = ({ siteTitle }) => (
               </Button>
             </li>
             <li>
-              <Button style={{ width: "200px" }}>
+              <Button variant="danger" style={{ width: "200px" }}>
                 <img
                   src={Thanos}
                   style={{ width: "200px", borderRadius: "100px" }}
@@ -54,7 +54,7 @@ const Header = ({ siteTitle }) => (
               </Button>
             </li>
             <li>
-              <Button style={{ width: "200px" }}>
+              <Button variant="danger" style={{ width: "200px" }}>
                 <img
                   src={SilverSurfer}
                   style={{ width: "200px", borderRadius: "100px" }}

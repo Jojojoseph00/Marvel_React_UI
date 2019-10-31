@@ -4,7 +4,7 @@ import IronMan from "../images/ironman.jpg"
 
 // button 1 onlick: choice = ironman
 
-const choice = 1
+const choice = 4
 
 const selectedChar =
   choice === 1
@@ -17,14 +17,16 @@ const selectedChar =
     ? "Iron Man"
     : "No character Selected"
 
-const SaleDate = "15/05/1998"
-const CutoffDate = "15/05/1998"
-const UnlimitedDate = "15/05/1998"
-const DigitalDate = "15/05/1998"
-const Writer = "Youssef"
-const Penciller = "El-Moukhtar"
-const Letterer = "Mokhtari"
-const Summary = "A long time ago in a galaxy far far away"
+const Description = {
+  SaleDate: "15/05/1998",
+  CutoffDate: "15/05/1998",
+  UnlimitedDate: "15/05/1998",
+  DigitalDate: "15/05/1998",
+  Writer: "Youssef",
+  Penciller: "El-Moukhtar",
+  Letterer: "Mokhtari",
+  Summary: "A long time ago in a galaxy far far away",
+}
 
 const IndexPage = () => (
   <Layout>
@@ -44,23 +46,23 @@ const IndexPage = () => (
           <h3>test2</h3>
 
           <p>
-            <b>Date on sale:</b> {SaleDate}
+            <b>Date on sale:</b> {Description.SaleDate}
             <br></br>
-            <b>Final cut off order date:</b> {CutoffDate}
+            <b>Final cut off order date:</b> {Description.CutoffDate}
             <br></br>
-            <b>Unlimited date:</b> {UnlimitedDate}
+            <b>Unlimited date:</b> {Description.UnlimitedDate}
             <br></br>
-            <b>Digital purchase date:</b> {DigitalDate}
+            <b>Digital purchase date:</b> {Description.DigitalDate}
             <br></br>
-            <b>Writer:</b> {Writer}
+            <b>Writer:</b> {Description.Writer}
             <br></br>
-            <b>Penciller:</b> {Penciller}
+            <b>Penciller:</b> {Description.Penciller}
             <br></br>
-            <b>Letterer:</b> {Letterer}
+            <b>Letterer:</b> {Description.Letterer}
             <br></br> <b>Summary:</b>
           </p>
 
-          <p> {Summary}</p>
+          <p> {Description.Summary}</p>
         </div>
       </div>
     </div>
