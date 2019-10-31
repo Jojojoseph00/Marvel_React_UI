@@ -1,10 +1,13 @@
 import React from "react"
 import Layout from "../components/layout"
 import IronMan from "../images/ironman.jpg"
+import IronManComic from "../images/ironmancomic.jpg"
 
 // button 1 onlick: choice = ironman
 
 const choice = 4
+
+const IssueName = "ComicBook API Title"
 
 const selectedChar =
   choice === 1
@@ -32,18 +35,17 @@ const IndexPage = () => (
   <Layout>
     <div class="row">
       <div class="column" style={{ backgroundColor: "#e0e0e0" }}>
-        <h2>{selectedChar}</h2>
-        <p>Some text..</p>
+        <h2>Comics featuring {selectedChar}:</h2>
+        <p>This is where we put a gallery</p>
       </div>
       <div class="column">
-        <h2>Column 2</h2>
+        <h2>{IssueName}</h2>
         <div class="babycolumn">
-          <h3>test1</h3>
-          <p>Some text..</p>
-          <img src={IronMan} style={{ width: "150px" }}></img>
+          <img src={IronManComic}></img>
         </div>
         <div class="babycolumn" style={{ backgroundColor: "#e0e0e0" }}>
-          <h3>test2</h3>
+          <h3>Detailed information</h3>
+          <br></br>
 
           <p>
             <b>Date on sale:</b> {Description.SaleDate}
