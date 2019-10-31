@@ -4,6 +4,19 @@ import Layout from "../components/layout"
 // import Image from "../components/image"
 import SEO from "../components/seo"
 import IronMan from "../images/ironman.jpg"
+import { choice } from "../components/header"
+
+// button 1 onlick: choice = ironman
+const selectedChar =
+  choice === "1"
+    ? "Silver Surfer"
+    : choice === "2"
+    ? "Thanos"
+    : choice === "3"
+    ? "Dr Doom"
+    : choice === "4"
+    ? "Iron Man"
+    : "No character Selected"
 
 const SaleDate = "15/05/1998"
 const CutoffDate = "15/05/1998"
@@ -18,7 +31,7 @@ const IndexPage = () => (
   <Layout>
     <div class="row">
       <div class="column" style={{ backgroundColor: "#e0e0e0" }}>
-        <h2>Column 1</h2>
+        <h2>{selectedChar}</h2>
         <p>Some text..</p>
       </div>
       <div class="column">
