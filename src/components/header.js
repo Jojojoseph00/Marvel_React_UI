@@ -11,9 +11,6 @@ import Thanos from "../images/thanos.jpg"
 import SilverSurfer from "../images/silversurfer.jpg"
 import DrDoom from "../images/drdoom.jpg"
 
-const choice = 2
-export { choice }
-
 const Header = ({ siteTitle }) => (
   // <!-- Sidebar -->
   <div id="sidebar">

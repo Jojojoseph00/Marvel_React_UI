@@ -1,20 +1,19 @@
 import React from "react"
-import { Link } from "gatsby"
 import Layout from "../components/layout"
-// import Image from "../components/image"
-import SEO from "../components/seo"
 import IronMan from "../images/ironman.jpg"
-import { choice } from "../components/header"
 
 // button 1 onlick: choice = ironman
+
+const choice = 1
+
 const selectedChar =
-  choice === "1"
+  choice === 1
     ? "Silver Surfer"
-    : choice === "2"
+    : choice === 2
     ? "Thanos"
-    : choice === "3"
+    : choice === 3
     ? "Dr Doom"
-    : choice === "4"
+    : choice === 4
     ? "Iron Man"
     : "No character Selected"
 
@@ -60,6 +59,7 @@ const IndexPage = () => (
             <b>Letterer:</b> {Letterer}
             <br></br> <b>Summary:</b>
           </p>
+
           <p> {Summary}</p>
         </div>
       </div>
