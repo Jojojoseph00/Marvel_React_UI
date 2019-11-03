@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import IronMan from "../images/ironman.jpg"
 import IronManComic from "../images/ironmancomic.jpg"
+import APIgetter from "../components/apigetter"
 
 // button 1 onlick: choice = ironman
 
@@ -32,6 +33,7 @@ const Description = {
 }
 
 const IndexPage = () => (
+  // Layout stuff
   <Layout>
     <div class="row">
       <div class="column" style={{ backgroundColor: "#e0e0e0" }}>
@@ -62,6 +64,7 @@ const IndexPage = () => (
             <br></br>
             <b>Letterer:</b> {Description.Letterer}
             <br></br> <b>Summary:</b>
+            <APIgetter></APIgetter>
           </p>
 
           <p> {Description.Summary}</p>
