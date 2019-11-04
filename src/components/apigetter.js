@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import SilverSurfer from "../images/silversurfer.jpg"
 
 import PropTypes from "prop-types"
 import axios from "axios"
@@ -19,6 +20,7 @@ const APIgetter = ({ children }) => {
   const hash_string = md5(hash_key)
 
   const [marvelData, setMarvelData] = useState([])
+  const limit = 5
 
   //   Version 1
   //   request(
@@ -43,14 +45,18 @@ const APIgetter = ({ children }) => {
   //   })
 
   axios
+    // .get(
+    //   `http://gateway.marvel.com/v1/public/comics?ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
+    // )
     .get(
-      `http://gateway.marvel.com/v1/public/comics?ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
+      `https://gateway.marvel.com:443/v1/public/comics?title=Iron%20Man&orderBy=onsaleDate&limit=${limit}&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
     )
     .then(res => {
       // console.log(res.data.data.results)
 
       // console.log(Object.keys(res.data.data.results[0]))
       setMarvelData(res.data.data.results)
+      console.log(marvelData)
     })
     .catch(err => {
       console.log(err)
@@ -59,7 +65,16 @@ const APIgetter = ({ children }) => {
   return (
     <ul>
       {marvelData.map((record, index) => {
-        return <li>{record.issueNumber + "-" + record.title}</li>
+        return (
+          <li>
+            {record.issueNumber + "-" + record.title}
+            <div class="row">
+              <div class="column">
+                <img src={SilverSurfer}></img>
+              </div>
+            </div>
+          </li>
+        )
       })}
     </ul>
   )

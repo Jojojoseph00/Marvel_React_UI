@@ -25,9 +25,6 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div>
-        <Header siteTitle="Marvel" />
-      </div>
       <div
         style={{
           margin: "0px 0px 10px 250px",
