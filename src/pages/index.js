@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/layout"
 import IronManComic from "../images/ironmancomic.jpg"
 import APIgetter from "../components/apigetter"
@@ -14,7 +14,7 @@ import IronMan from "../images/ironman.jpg"
 import Thanos from "../images/thanos.jpg"
 import SilverSurfer from "../images/silversurfer.jpg"
 import DrDoom from "../images/drdoom.jpg"
-import { useState } from "react"
+// import { useState } from "react"
 import ThanosAPI from "../components/thanosapi"
 // import PropTypes from "prop-types"
 import axios from "axios"
@@ -35,6 +35,11 @@ const AllComics = ({ children }) => {
   const [marvelData, setMarvelData] = useState([])
   const limit = 5
   const charsearch = "Hello"
+
+  useEffect(() => {
+    // const selectedChar = "Yo"
+    const [selectedChar, setSelectedChar] = useState("Yo")
+  }, [])
 
   axios
     .get
@@ -100,7 +105,8 @@ function Iron() {
   // e.preventDefault()
   console.log("Click Iron Man")
   console.log(choice)
-  console.log(selectedChar)
+  // console.log(selectedChar)
+  Charsetter(choice)
 }
 function Doom() {
   console.log(choice)
@@ -109,6 +115,7 @@ function Doom() {
   console.log("Click Dr Doom")
   console.log(choice)
   console.log(selectedChar)
+  Charsetter(choice)
 }
 function Thane() {
   console.log(choice)
@@ -117,6 +124,7 @@ function Thane() {
   console.log("Click Thanos the mad titan")
   console.log(choice)
   console.log(selectedChar)
+  Charsetter(choice)
 }
 function Sliver() {
   console.log(choice)
@@ -125,22 +133,45 @@ function Sliver() {
   console.log("Click Silver surfer.")
   console.log(choice)
   console.log(selectedChar)
+  Charsetter(choice)
 }
 
-const selectedChar =
-  choice === 1
-    ? "Silver Surfer"
-    : choice === 2
-    ? "Thanos"
-    : choice === 3
-    ? "Dr Doom"
-    : choice === 4
-    ? "Iron Man"
-    : "No character Selected"
+// const selectedChar = "Yo"
+// choice === 1
+//   ? "Silver Surfer"
+//   : choice === 2
+//   ? "Thanos"
+//   : choice === 3
+//   ? "Dr Doom"
+//   : choice === 4
+//   ? "Iron Man"
+//   : "No character Selected"
+
+function Charsetter(choice) {
+  if (choice === 1) {
+    // this.state.selectedChar = "Silver Surfer"
+    setSelectedChar("Silver Surfer")
+  }
+  if (choice === 2) {
+    // this.state.selectedChar = "Thanos"
+    setSelectedChar("Thanos")
+  }
+  if (choice === 3) {
+    // this.state.selectedChar = "Dr Doom"
+    setSelectedChar("Dr Doom")
+  }
+  if (choice === 4) {
+    // this.state.selectedChar = "Iron Man"
+    setSelectedChar("Iron Man")
+  } else {
+    // this.state.selectedChar = "No character Selected"
+    setSelectedChar("No character Selected")
+  }
+}
 
 const CharInfo = () => (
   <div>
-    <p>Testing YelloW</p>
+    <p>{selectedChar}</p>
   </div>
 )
 
@@ -160,6 +191,7 @@ const Header = () => (
               variant="danger"
               style={{ width: "200px" }}
               onClick={Iron}
+              // onPress={this.onPressButton}
               // onClick={IndexPage()}
               // Need to refresh the indexpage const
             >
@@ -223,7 +255,7 @@ const IndexPage = () => (
     </div>
     <div class="row">
       <div class="column" style={{ backgroundColor: "#e0e0e0" }}>
-        <h2>Comics featuring {selectedChar}:</h2>
+        <h2>Comics featuring {this.setState("Hello")}:</h2>
         <p>This is where we put a gallery</p>
         <CharInfo />
         <div class="rower">
