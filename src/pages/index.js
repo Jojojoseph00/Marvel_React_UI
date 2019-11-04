@@ -14,6 +14,7 @@ import Thanos from "../images/thanos.jpg"
 import SilverSurfer from "../images/silversurfer.jpg"
 import DrDoom from "../images/drdoom.jpg"
 import { useState } from "react"
+import ThanosAPI from "../components/thanosapi"
 
 const IssueName = "ComicBook API Title"
 
@@ -74,6 +75,12 @@ const selectedChar =
     : choice === 4
     ? "Iron Man"
     : "No character Selected"
+
+const CharInfo = () => (
+  <div>
+    <p>Testing YelloW</p>
+  </div>
+)
 
 const Header = () => (
   // <!-- Sidebar -->
@@ -156,6 +163,7 @@ const IndexPage = () => (
       <div class="column" style={{ backgroundColor: "#e0e0e0" }}>
         <h2>Comics featuring {selectedChar}:</h2>
         <p>This is where we put a gallery</p>
+        <CharInfo />
         <div class="row">
           <div class="column">
             <img src={SilverSurfer}></img>
@@ -167,30 +175,7 @@ const IndexPage = () => (
         <div class="babycolumn">
           <img src={IronManComic}></img>
         </div>
-        <div class="babycolumn" style={{ backgroundColor: "#e0e0e0" }}>
-          <h3>Detailed information</h3>
-          <br></br>
-
-          <p>
-            <b>Date on sale:</b> {Description.SaleDate}
-            <br></br>
-            <b>Final cut off order date:</b> {Description.CutoffDate}
-            <br></br>
-            <b>Unlimited date:</b> {Description.UnlimitedDate}
-            <br></br>
-            <b>Digital purchase date:</b> {Description.DigitalDate}
-            <br></br>
-            <b>Writer:</b> {Description.Writer}
-            <br></br>
-            <b>Penciller:</b> {Description.Penciller}
-            <br></br>
-            <b>Letterer:</b> {Description.Letterer}
-            <br></br> <b>Summary:</b>
-          </p>
-          <APIgetter></APIgetter>
-
-          <p> {Description.Summary}</p>
-        </div>
+        <ThanosAPI></ThanosAPI>
       </div>
     </div>
   </Layout>
