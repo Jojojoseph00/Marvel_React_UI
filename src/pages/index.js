@@ -64,8 +64,8 @@ const IndexPage = () => (
             <br></br>
             <b>Letterer:</b> {Description.Letterer}
             <br></br> <b>Summary:</b>
-            <APIgetter></APIgetter>
           </p>
+          <APIgetter></APIgetter>
 
           <p> {Description.Summary}</p>
         </div>
