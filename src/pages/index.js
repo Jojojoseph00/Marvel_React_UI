@@ -228,32 +228,31 @@ const IndexPage = () => (
         <CharInfo />
         <div class="rower">
           <div class="columner">
-            <img src={SilverSurfer}></img>
-            <img src={IronManComic}></img>
-            <img src={SilverSurfer}></img>
-            <img src={IronManComic}></img>
-            <img src={SilverSurfer}></img>
-            <img src={IronManComic}></img>
-                      
+            <img src={IronManComic}></img>      
           </div>
-                    
+          <div class="columner">
+            <img src={IronManComic}></img>      
+          </div>
+          <div class="columner">
+            <img src={IronManComic}></img>      
+          </div>
+          <div class="columner">
+            <img src={IronManComic}></img>      
+          </div>
+          <div class="columner">
+            <img src={IronManComic}></img>      
+          </div>
+          <div class="columner">
+            <img src={IronManComic}></img>      
+          </div>
+          <div class="columner">
+            <img src={IronManComic}></img>      
+          </div>
           <div class="columner">
             <img src={IronManComic}></img>
-            <img src={SilverSurfer}></img>
-            <img src={IronManComic}></img>
-            <img src={SilverSurfer}></img>
-            <img src={IronManComic}></img>
-            <img src={SilverSurfer}></img>
+          </div>
+          <div class="columner">
             <img src={IronManComic}></img>       
-          </div>
-                    
-          <div class="columner">
-            <img src={SilverSurfer}></img>
-            <img src={IronManComic}></img>
-            <img src={SilverSurfer}></img>
-            <img src={IronManComic}></img>
-            <img src={SilverSurfer}></img>
-            <img src={IronManComic}></img>        
           </div>
         </div>
 
