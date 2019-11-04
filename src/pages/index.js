@@ -5,6 +5,7 @@ import APIgetter from "../components/apigetter"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import "../components/header.css"
+import "../styles/global.css"
 import Image from "../components/image"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Button from "react-bootstrap/Button"
@@ -225,11 +226,37 @@ const IndexPage = () => (
         <h2>Comics featuring {selectedChar}:</h2>
         <p>This is where we put a gallery</p>
         <CharInfo />
-        <div class="row">
-          <div class="column">
+        <div class="rower">
+          <div class="columner">
             <img src={SilverSurfer}></img>
+            <img src={IronManComic}></img>
+            <img src={SilverSurfer}></img>
+            <img src={IronManComic}></img>
+            <img src={SilverSurfer}></img>
+            <img src={IronManComic}></img>
+                      
+          </div>
+                    
+          <div class="columner">
+            <img src={IronManComic}></img>
+            <img src={SilverSurfer}></img>
+            <img src={IronManComic}></img>
+            <img src={SilverSurfer}></img>
+            <img src={IronManComic}></img>
+            <img src={SilverSurfer}></img>
+            <img src={IronManComic}></img>       
+          </div>
+                    
+          <div class="columner">
+            <img src={SilverSurfer}></img>
+            <img src={IronManComic}></img>
+            <img src={SilverSurfer}></img>
+            <img src={IronManComic}></img>
+            <img src={SilverSurfer}></img>
+            <img src={IronManComic}></img>        
           </div>
         </div>
+
         <AllComics></AllComics>
       </div>
       <div class="column">

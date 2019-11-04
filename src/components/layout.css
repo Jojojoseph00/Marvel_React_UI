@@ -12,7 +12,7 @@ body {
 }
 
 #footer {
-  position: absolute;
+  /* position: absolute; */
   margin: 10px 25px;
   bottom: 0;
   width: 100%;
