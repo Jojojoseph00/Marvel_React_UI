@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import SilverSurfer from "../images/silversurfer.jpg"
-
 import PropTypes from "prop-types"
 import axios from "axios"
 import md5 from "md5"
@@ -48,9 +47,9 @@ const APIgetter = ({ children }) => {
     // .get(
     //   `http://gateway.marvel.com/v1/public/comics?ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
     // )
-    .get(
-      `https://gateway.marvel.com:443/v1/public/comics?title=Iron%20Man&orderBy=onsaleDate&limit=${limit}&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
-    )
+    .get
+    //   `https://gateway.marvel.com:443/v1/public/comics?title=Iron%20Man&orderBy=onsaleDate&limit=${limit}&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
+    ()
     .then(res => {
       // console.log(res.data.data.results)
 
