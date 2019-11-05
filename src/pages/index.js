@@ -90,7 +90,7 @@ const IndexPage = () => {
   }
 
   // let [selectedTitle, setSelectedTitle] = useState("Cable")
-  let [comicID, setcomicID] = useState(1493)
+  let [comicID, setcomicID] = useState(7489)
   // let comicID = 1493
 
   const Testfunc = recordname => {
@@ -141,10 +141,9 @@ const IndexPage = () => {
               <img
                 src={record.thumbnail.path + ".jpg"}
                 style={{ width: "100%" }}
+                onClick={() => Testfunc(record.id)}
               ></img>
-              <Button onClick={() => Testfunc(record.id)}>
-                {record.title}
-              </Button>
+              <h3>{record.title}</h3>
             </div>
           )
         })}
