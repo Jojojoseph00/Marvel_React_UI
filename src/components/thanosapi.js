@@ -1,5 +1,0 @@
-import React, { useState, useEffect } from "react"
-import SilverSurfer from "../images/silversurfer.jpg"
-import PropTypes from "prop-types"
-import axios from "axios"
-import md5 from "md5"

@@ -2,15 +2,12 @@ import "../components/header.css"
 import "../styles/global.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import React, { useEffect, useState } from "react"
-import APIgetter from "../components/apigetter"
 import Button from "react-bootstrap/Button"
 import ButtonGroup from "react-bootstrap/ButtonGroup"
 import DrDoom from "../images/drdoom.jpg"
 import Image from "../components/image"
 import IronMan from "../images/ironman.jpg"
-import IronManComic from "../images/ironmancomic.jpg"
 import Layout from "../components/layout"
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import SilverSurfer from "../images/silversurfer.jpg"
 import Thanos from "../images/thanos.jpg"
@@ -18,60 +15,34 @@ import axios from "axios"
 import md5 from "md5"
 
 const IndexPage = () => {
-  const Description = {
-    SaleDate: "15/05/1998",
-    CutoffDate: "15/05/1998",
-    UnlimitedDate: "15/05/1998",
-    DigitalDate: "15/05/1998",
-    Writer: "Youssef",
-    Penciller: "El-Moukhtar",
-    Letterer: "Mokhtari",
-    Summary: "A long time ago in a galaxy far far away",
-  }
-
   const [selectedChar, setSelectedChar] = useState("Comics featuring:")
   let [selectedTitle, setSelectedTitle] = useState("Cable")
   var choice = 0
-  console.log("choice is " + choice)
+  let [comicID, setcomicID] = useState(7489)
 
+  // Clicking functions
   const Iron = () => {
-    console.log(choice)
     choice = 4
-
-    console.log("chosen char: " + setSelectedTitle)
-    console.log("Click Iron Man")
-    console.log(choice)
     setSelectedChar(Charsetter(choice))
     setSelectedTitle("Iron%20Man")
   }
   const Doom = () => {
-    console.log(choice)
     choice = 3
-    console.log("Click Dr Doom")
-    console.log(choice)
-    console.log(selectedChar)
     setSelectedChar(Charsetter(choice))
     setSelectedTitle("Doctor%20Doom")
   }
   const Thane = () => {
-    console.log(choice)
     choice = 2
-    console.log("Click Thanos the mad titan")
-    console.log(choice)
-    console.log(selectedChar)
     setSelectedChar(Charsetter(choice))
     setSelectedTitle("Thanos")
   }
   const Sliver = () => {
-    console.log(choice)
     choice = 1
-    console.log("Click Silver surfer.")
-    console.log(choice)
-    console.log(selectedChar)
     setSelectedChar(Charsetter(choice))
     setSelectedTitle("Silver%20surfer")
   }
 
+  // Set character based on click
   const Charsetter = choice => {
     if (choice === 1) {
       return "Comics featuring the Silver Surfer"
@@ -89,13 +60,8 @@ const IndexPage = () => {
     }
   }
 
-  // let [selectedTitle, setSelectedTitle] = useState("Cable")
-  let [comicID, setcomicID] = useState(7489)
-  // let comicID = 1493
-
-  const Testfunc = recordname => {
-    console.log("I have been pressed " + recordname)
-    // return comicID
+  // Setting comic ID
+  const IDSetter = recordname => {
     console.log(comicID)
     setcomicID(recordname)
   }
@@ -105,7 +71,8 @@ const IndexPage = () => {
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
-  const ThanosGetter = ({ children }) => {
+  const ComicsGetter = ({ children }) => {
+    // There is an api alternative in case I exceed 3000 calls/day
     const api_key = "11bc117d9a1b6b94e6f0ac7bdb36f2a6"
     //   const api_key = "14e78f65cc59325dadf4118e889a89fe"
     const secret_key = "fe9782be64504bb8fca885e687938508268400a5"
@@ -122,11 +89,9 @@ const IndexPage = () => {
           `https://gateway.marvel.com:443/v1/public/comics?title=${selectedTitle}&orderBy=title&limit=${limit}&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
         )
         .then(res => {
-          console.log("Hello I'm here")
-          console.log(res.data.data.results)
-          // console.log(Object.keys(res.data.data.results[0]))
+          // console.log("Hello I'm here")
+          // console.log(res.data.data.results)
           setMarvelData(res.data.data.results)
-          // console.log(marvelData)
         })
         .catch(err => {
           console.log(err)
@@ -141,7 +106,7 @@ const IndexPage = () => {
               <img
                 src={record.thumbnail.path + ".jpg"}
                 style={{ width: "100%" }}
-                onClick={() => Testfunc(record.id)}
+                onClick={() => IDSetter(record.id)}
               ></img>
               <h3>{record.title}</h3>
             </div>
@@ -151,15 +116,12 @@ const IndexPage = () => {
     )
   }
 
-  ThanosGetter.propTypes = {
+  ComicsGetter.propTypes = {
     children: PropTypes.node.isRequired,
   }
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
-
-  // onclick of comicID, call onclick function to attribute a comicID value
-  // That value is then used in url for detail information
 
   // DESCRIPTION API ???????????????????????????????????????????????????????????????????????????
   // DESCRIPTION API ???????????????????????????????????????????????????????????????????????????
@@ -180,11 +142,9 @@ const IndexPage = () => {
           `https://gateway.marvel.com:443/v1/public/comics/${comicID}??&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
         )
         .then(res => {
-          console.log("COmic ID information")
-          console.log(res.data.data.results)
-          // console.log(Object.keys(res.data.data.results[0]))
+          // console.log("Comic ID information")
+          // console.log(res.data.data.results)
           setMarvelData(res.data.data.results)
-          // console.log(marvelData)
         })
         .catch(err => {
           console.log(err)
@@ -193,7 +153,6 @@ const IndexPage = () => {
 
     return (
       // URGENT: Replace dates[2] and name[2] duplicates by adding CSSConditionRule, if date[3]= false then date[2 instead]
-
       <div>
         {marvelData.map((record, index) => {
           return (
@@ -232,7 +191,6 @@ const IndexPage = () => {
       </div>
     )
   }
-
   DescriptionGetter.propTypes = {
     children: PropTypes.node.isRequired,
   }
@@ -241,7 +199,6 @@ const IndexPage = () => {
   // DESCRIPTION API ???????????????????????????????????????????????????????????????????????????
 
   const Header = () => (
-    // <!-- Sidebar -->
     <div id="sidebar">
       <Image></Image>
       <ul class="nav">
@@ -252,9 +209,6 @@ const IndexPage = () => {
                 variant="danger"
                 style={{ width: "200px" }}
                 onClick={Iron}
-                // onPress={this.onPressButton}
-                // onClick={IndexPage()}
-                // Need to refresh the indexpage const
               >
                 <img
                   src={IronMan}
@@ -311,13 +265,12 @@ const IndexPage = () => {
   Header.propTypes = {
     siteTitle: PropTypes.string,
   }
-
   Header.defaultProps = {
     siteTitle: ``,
   }
 
   return (
-    // Layout stuff
+    // Layout stuff column
     <Layout>
       <div>
         <Header />
@@ -328,7 +281,7 @@ const IndexPage = () => {
             <CharInfo />
           </p>
           <div class="rower">
-            <ThanosGetter></ThanosGetter>
+            <ComicsGetter></ComicsGetter>
           </div>
         </div>
         <div class="column">
