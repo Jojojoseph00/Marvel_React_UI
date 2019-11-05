@@ -36,6 +36,8 @@ const IndexPage = () => {
 
   const [selectedChar, setSelectedChar] = useState("Comics featuring:")
 
+  // This is the variable I wish to ChannelMergerNode, so placeholder value of string is ironman
+  // This is used down in the URL in line221 - Must be updated on click
   let [selectedTitle, setSelectedTitle] = useState("Iron%20man")
   // let titleChar = "Deadpool"
 
@@ -45,14 +47,16 @@ const IndexPage = () => {
   const Iron = () => {
     console.log(choice)
     choice = 4
-    // titleChar = "Iron%20Man"
-    // selectedTitle = "Iron%20Man"
-    setSelectedTitle = "Iron%20Man"
+
     console.log("chosen char: " + setSelectedTitle)
     // e.preventDefault()
     console.log("Click Iron Man")
     console.log(choice)
     setSelectedChar(Charsetter(choice))
+
+    // here we try to reassign the value of that
+    // selectedTitle = "Iron%20Man"
+    setSelectedTitle = "Iron%20Man"
     return setSelectedTitle
   }
   const Doom = () => {
