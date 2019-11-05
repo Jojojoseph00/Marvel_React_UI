@@ -108,7 +108,7 @@ const IndexPage = () => {
                 style={{ width: "100%" }}
                 onClick={() => IDSetter(record.id)}
               ></img>
-              <h3>{record.title}</h3>
+              <p>{record.title}</p>
             </div>
           )
         })}
