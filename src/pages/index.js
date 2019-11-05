@@ -18,7 +18,7 @@ const IndexPage = () => {
   const [selectedChar, setSelectedChar] = useState("Comics featuring:")
   let [selectedTitle, setSelectedTitle] = useState("Cable")
   var choice = 0
-  let [comicID, setcomicID] = useState(7489)
+  let [comicID, setcomicID] = useState(7500)
 
   // Clicking functions
   const Iron = () => {
