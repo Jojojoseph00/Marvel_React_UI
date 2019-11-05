@@ -88,13 +88,16 @@ const IndexPage = () => {
       return "No character Selected"
     }
   }
-  let comicID = 1493
+
+  // let [selectedTitle, setSelectedTitle] = useState("Cable")
+  let [comicID, setcomicID] = useState(1493)
+  // let comicID = 1493
 
   const Testfunc = recordname => {
     console.log("I have been pressed " + recordname)
-    comicID = recordname
     // return comicID
     console.log(comicID)
+    setcomicID(recordname)
   }
 
   const CharInfo = () => <h2>{selectedChar}</h2>
@@ -190,33 +193,40 @@ const IndexPage = () => {
     }, [])
 
     return (
-      // Might remove the [0]
-      // <img src={SilverSurfer}></img>
+      // URGENT: Replace dates[2] and name[2] duplicates by adding CSSConditionRule, if date[3]= false then date[2 instead]
 
       <div>
         {marvelData.map((record, index) => {
           return (
-            <div class="babycolumn" style={{ backgroundColor: "#e0e0e0" }}>
-              <h1>{record.title}</h1> <h3>Detailed information</h3>
-              <br></br>    
-              <p>
-                <b>Date on sale:</b> {record.dates[0].date.substring(0, 10)}
-                <br></br>
-                <b>Print price:</b> {record.prices[0].price}$<br></br>
-                <b>Unlimited date:</b> {record.dates[2].date.substring(0, 10)}
-                <br></br>
-                <b>Digital purchase date:</b> 
-                {record.dates[3].date.substring(0, 10)}
-                <br></br>
-                <b>Editor:</b> {record.creators.items[1].name}
-                <br></br>
-                <b>Penciller:</b> {record.creators.items[2].name}
-                <br></br>
-                <b>Inker:</b> {record.creators.items[0].name}
-                <br></br>
-                <b>Summary:</b>
-              </p>
-              <p> {record.description}</p>         
+            <div>
+              <div class="babycolumn">
+                <img
+                  src={record.thumbnail.path + ".jpg"}
+                  style={{ width: "100%", float: "left" }}
+                ></img>
+              </div>
+              <div class="babycolumn" style={{ backgroundColor: "#e0e0e0" }}>
+                <h1>{record.title}</h1> <h3>Detailed information</h3>
+                <br></br>    
+                <p>
+                  <b>Date on sale:</b> {record.dates[0].date.substring(0, 10)}
+                  <br></br>
+                  <b>Print price:</b> {record.prices[0].price}$<br></br>
+                  <b>Unlimited date:</b> {record.dates[2].date.substring(0, 10)}
+                  <br></br>
+                  <b>Digital purchase date:</b> 
+                  {record.dates[2].date.substring(0, 10)}
+                  <br></br>
+                  <b>Editor:</b> {record.creators.items[1].name}
+                  <br></br>
+                  <b>Penciller:</b> {record.creators.items[2].name}
+                  <br></br>
+                  <b>Inker:</b> {record.creators.items[0].name}
+                  <br></br>
+                  <b>Summary:</b>
+                </p>
+                <p> {record.description}</p>         
+              </div>
             </div>
           )
         })}
@@ -321,38 +331,8 @@ const IndexPage = () => {
           <div class="rower">
             <ThanosGetter></ThanosGetter>
           </div>
-
-          <div class="rower">
-            <div class="columner">
-              <img src={IronManComic}></img>      
-            </div>
-            <div class="columner">
-              <img src={IronManComic}></img>      
-            </div>
-            <div class="columner">
-              <img src={IronManComic}></img>      
-            </div>
-            <div class="columner">
-              <img src={IronManComic}></img>      
-            </div>
-            <div class="columner">
-              <img src={IronManComic}></img>      
-            </div>
-            <div class="columner">
-              <img src={IronManComic}></img>      
-            </div>
-            <div class="columner">
-              <img src={IronManComic}></img>
-            </div>
-            <div class="columner">
-              <img src={IronManComic}></img>       
-            </div>
-          </div>
         </div>
         <div class="column">
-          <div class="babycolumn">
-            <img src={IronManComic}></img>
-          </div>
           <DescriptionGetter></DescriptionGetter>
         </div>
       </div>
