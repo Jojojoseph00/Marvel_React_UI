@@ -36,7 +36,7 @@ const IndexPage = () => {
 
   const [selectedChar, setSelectedChar] = useState("Comics featuring:")
 
-  let [selectedTitle, setSelectedTitle] = useState("Iron%20Man")
+  let [selectedTitle, setSelectedTitle] = useState("Iron%20man")
   // let titleChar = "Deadpool"
 
   var choice = 0
@@ -145,7 +145,7 @@ const IndexPage = () => {
     useEffect(() => {
       axios
         .get(
-          `https://gateway.marvel.com:443/v1/public/comics?title=${selectedTitle}&orderBy=modified&limit=${limit}&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
+          `https://gateway.marvel.com:443/v1/public/comics?title=${selectedTitle}&orderBy=title&limit=${limit}&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
         )
         .then(res => {
           console.log("Hello I'm here")
@@ -213,7 +213,7 @@ const IndexPage = () => {
     useEffect(() => {
       axios
         .get(
-          `https://gateway.marvel.com:443/v1/public/comics/9433??&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
+          `https://gateway.marvel.com:443/v1/public/comics/1493??&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
         )
         .then(res => {
           console.log("COmic ID information")
@@ -235,26 +235,26 @@ const IndexPage = () => {
         {marvelData.map((record, index) => {
           return (
             <div class="babycolumn" style={{ backgroundColor: "#e0e0e0" }}>
-               <h3>Detailed information</h3>
+              <h1>{record.title}</h1> <h3>Detailed information</h3>
               <br></br>    
               <p>
-                <b>Date on sale:</b> {record.title}
+                <b>Date on sale:</b> {record.dates[0].date.substring(0, 10)}
                 <br></br>
-                <b>Final cut off order date:</b> {record.title}
+                <b>Print price:</b> {record.prices[0].price}$<br></br>
+                <b>Unlimited date:</b> {record.dates[2].date.substring(0, 10)}
                 <br></br>
-                <b>Unlimited date:</b> {record.title}
+                <b>Digital purchase date:</b> 
+                {record.dates[3].date.substring(0, 10)}
                 <br></br>
-                <b>Digital purchase date:</b> {record.title}
+                <b>Editor:</b> {record.creators.items[1].name}
                 <br></br>
-                <b>Writer:</b> {record.creators.items[1].name}
+                <b>Penciller:</b> {record.creators.items[2].name}
                 <br></br>
-                <b>Penciller:</b> {record.title}
-                <br></br>
-                <b>Letterer:</b> {record.title}
+                <b>Inker:</b> {record.creators.items[0].name}
                 <br></br>
                 <b>Summary:</b>
               </p>
-              <p> {Description.Summary}</p>         
+              <p> {record.description}</p>         
             </div>
           )
         })}
@@ -389,7 +389,6 @@ const IndexPage = () => {
           </div>
         </div>
         <div class="column">
-          <h2>{IssueName}</h2>
           <div class="babycolumn">
             <img src={IronManComic}></img>
           </div>
