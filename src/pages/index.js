@@ -14,15 +14,10 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import SilverSurfer from "../images/silversurfer.jpg"
 import Thanos from "../images/thanos.jpg"
-// import ThanosGetter from "../components/thanosapi"
-// import { useState } from "react"
-// import ThanosAPI from "../components/thanosapi"
 import axios from "axios"
 import md5 from "md5"
 
 const IndexPage = () => {
-  const IssueName = "ComicBook API Title"
-
   const Description = {
     SaleDate: "15/05/1998",
     CutoffDate: "15/05/1998",
@@ -35,12 +30,7 @@ const IndexPage = () => {
   }
 
   const [selectedChar, setSelectedChar] = useState("Comics featuring:")
-
-  // This is the variable I wish to ChannelMergerNode, so placeholder value of string is ironman
-  // This is used down in the URL in line221 - Must be updated on click
-  let [selectedTitle, setSelectedTitle] = useState("Iron%20man")
-  // let titleChar = "Deadpool"
-
+  let [selectedTitle, setSelectedTitle] = useState("Cable")
   var choice = 0
   console.log("choice is " + choice)
 
@@ -49,78 +39,52 @@ const IndexPage = () => {
     choice = 4
 
     console.log("chosen char: " + setSelectedTitle)
-    // e.preventDefault()
     console.log("Click Iron Man")
     console.log(choice)
     setSelectedChar(Charsetter(choice))
-
-    // here we try to reassign the value of that
-    // selectedTitle = "Iron%20Man"
-    setSelectedTitle = "Iron%20Man"
-    return setSelectedTitle
+    setSelectedTitle("Iron%20Man")
   }
   const Doom = () => {
     console.log(choice)
     choice = 3
-    // e.preventDefault()
     console.log("Click Dr Doom")
     console.log(choice)
     console.log(selectedChar)
     setSelectedChar(Charsetter(choice))
+    setSelectedTitle("Doctor%20Doom")
   }
   const Thane = () => {
     console.log(choice)
     choice = 2
-    // e.preventDefault()
     console.log("Click Thanos the mad titan")
     console.log(choice)
     console.log(selectedChar)
     setSelectedChar(Charsetter(choice))
+    setSelectedTitle("Thanos")
   }
   const Sliver = () => {
     console.log(choice)
     choice = 1
-    // e.preventDefault()
     console.log("Click Silver surfer.")
     console.log(choice)
     console.log(selectedChar)
     setSelectedChar(Charsetter(choice))
+    setSelectedTitle("Silver%20surfer")
   }
-
-  // const selectedChar = "Yo"
-  // choice === 1
-  //   ? "Silver Surfer"
-  //   : choice === 2
-  //   ? "Thanos"
-  //   : choice === 3
-  //   ? "Dr Doom"
-  //   : choice === 4
-  //   ? "Iron Man"
-  //   : "No character Selected"
 
   const Charsetter = choice => {
     if (choice === 1) {
-      // this.state.selectedChar = "Silver Surfer"
-      // setSelectedChar("Silver Surfer")
       return "Comics featuring the Silver Surfer"
     }
     if (choice === 2) {
-      // this.state.selectedChar = "Thanos"
-      // setSelectedChar("Thanos")
       return "Comics featuring The Mad Titan Thanos"
     }
     if (choice === 3) {
-      // this.state.selectedChar = "Dr Doom"
-      // setSelectedChar("Dr Doom")
       return "Comics featuring Dr Doom"
     }
     if (choice === 4) {
-      // this.state.selectedChar = "Iron Man"
-      // setSelectedChar("Iron Man")
       return "Comics featuring Iron Man"
     } else {
-      // this.state.selectedChar = "No character Selected"
-      // setSelectedChar("No character Selected")
       return "No character Selected"
     }
   }
@@ -129,7 +93,6 @@ const IndexPage = () => {
     console.log("I have been pressed " + recordname)
   }
 
-  // const titleInfo = () => selectedTitle
   const CharInfo = () => <h2>{selectedChar}</h2>
 
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
@@ -196,7 +159,7 @@ const IndexPage = () => {
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
 
-  let comicID = 7481
+  let comicID = 1493
   // onclick of comicID, call onclick function to attribute a comicID value
   // That value is then used in url for detail information
 
@@ -212,12 +175,11 @@ const IndexPage = () => {
     const hash_key = timestamp + secret_key + api_key
     const hash_string = md5(hash_key)
     const [marvelData, setMarvelData] = useState([])
-    const limit = 6
 
     useEffect(() => {
       axios
         .get(
-          `https://gateway.marvel.com:443/v1/public/comics/1493??&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
+          `https://gateway.marvel.com:443/v1/public/comics/${comicID}??&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
         )
         .then(res => {
           console.log("COmic ID information")
@@ -360,7 +322,6 @@ const IndexPage = () => {
           <p>
             <CharInfo />
           </p>
-          <p>This is where we put a gallery</p>
           <div class="rower">
             <ThanosGetter></ThanosGetter>
           </div>
