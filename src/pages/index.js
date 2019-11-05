@@ -131,9 +131,6 @@ const IndexPage = () => {
     }, [])
 
     return (
-      // Might remove the [0]
-      // <img src={SilverSurfer}></img>
-
       <div>
         {marvelData.map((record, index) => {
           return (
@@ -142,7 +139,9 @@ const IndexPage = () => {
                 src={record.thumbnail.path + ".jpg"}
                 style={{ width: "100%" }}
               ></img>
-              <Button onClick={Testfunc(record.id)}>{record.title}</Button>
+              <Button onClick={() => Testfunc(record.id)}>
+                {record.title}
+              </Button>
             </div>
           )
         })}
