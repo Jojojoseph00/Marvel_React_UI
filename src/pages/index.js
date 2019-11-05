@@ -36,7 +36,7 @@ const IndexPage = () => {
 
   const [selectedChar, setSelectedChar] = useState("Comics featuring:")
 
-  let [selectedTitle, setSelectedTitle] = useState("Cable")
+  let [selectedTitle, setSelectedTitle] = useState("Captain%20America")
   let titleChar = "Deadpool"
 
   var choice = 0
@@ -121,6 +121,10 @@ const IndexPage = () => {
     }
   }
 
+  const Testfunc = recordname => {
+    console.log("I have been pressed " + recordname)
+  }
+
   // const titleInfo = () => selectedTitle
   const CharInfo = () => <h2>{selectedChar}</h2>
 
@@ -160,12 +164,20 @@ const IndexPage = () => {
       // <img src={SilverSurfer}></img>
 
       <div>
-         
         {marvelData.map((record, index) => {
           return (
             <div class="columner">
-              <img src={record.thumbnail.path + ".jpg"}></img>
-              <p>{record.title}</p>
+              <Button
+                variant="danger"
+                style={{ width: "100%" }}
+                onClick={Testfunc(record.title)}
+              >
+                <img
+                  src={record.thumbnail.path + ".jpg"}
+                  style={{ width: "100%" }}
+                ></img>
+                <p>{record.title}</p>
+              </Button>
             </div>
           )
         })}
@@ -273,9 +285,6 @@ const IndexPage = () => {
           </div>
 
           <div class="rower">
-            <div class="columner">
-              <ThanosGetter></ThanosGetter>      
-            </div>
             <div class="columner">
               <img src={IronManComic}></img>      
             </div>
