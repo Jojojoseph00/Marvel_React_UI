@@ -88,9 +88,13 @@ const IndexPage = () => {
       return "No character Selected"
     }
   }
+  let comicID = 1493
 
   const Testfunc = recordname => {
     console.log("I have been pressed " + recordname)
+    comicID = recordname
+    // return comicID
+    console.log(comicID)
   }
 
   const CharInfo = () => <h2>{selectedChar}</h2>
@@ -134,17 +138,11 @@ const IndexPage = () => {
         {marvelData.map((record, index) => {
           return (
             <div class="columner">
-              <Button
-                variant="danger"
+              <img
+                src={record.thumbnail.path + ".jpg"}
                 style={{ width: "100%" }}
-                onClick={Testfunc(record.title)}
-              >
-                <img
-                  src={record.thumbnail.path + ".jpg"}
-                  style={{ width: "100%" }}
-                ></img>
-                <p>{record.title}</p>
-              </Button>
+              ></img>
+              <Button onClick={Testfunc(record.id)}>{record.title}</Button>
             </div>
           )
         })}
@@ -159,7 +157,6 @@ const IndexPage = () => {
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
   // COMICS GALLERY API ???????????????????????????????????????????????????????????????????????????
 
-  let comicID = 1493
   // onclick of comicID, call onclick function to attribute a comicID value
   // That value is then used in url for detail information
 
