@@ -17,18 +17,15 @@ const APIgetter = ({ children }) => {
 
   useEffect(() => {
     axios
-      //   .get(
-      //     `http://gateway.marvel.com/v1/public/comics?ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
-      //   )
       .get(
         `https://gateway.marvel.com:443/v1/public/comics?title=Iron%20Man&orderBy=onsaleDate&limit=${limit}&ts=${timestamp}&apikey=${api_key}&hash=${hash_string}`
       )
       .then(res => {
-        // console.log(res.data.data.results)
-
-        console.log(Object.keys(res.data.data.results[0]))
+        console.log("Hello I'm here")
+        console.log(res.data.data.results)
+        // console.log(Object.keys(res.data.data.results[0]))
         setMarvelData(res.data.data.results)
-        console.log(marvelData)
+        // console.log(marvelData)
       })
       .catch(err => {
         console.log(err)
@@ -36,36 +33,22 @@ const APIgetter = ({ children }) => {
   }, [])
 
   return (
-    <ul>
-      {marvelData.map((record, index) => {
-        return (
-          <div class="row">
-            <div class="column">
-              <ul>
-                {marvelData.map((record, index) => {
-                  return (
-                    <li>
-                      <p>{record.title}</p>
-                      <img src={record.thumbnail.path + ".jpg"}></img>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          </div>
-
-          //   <img src={record.image.path}></img>
-          //   <li>
-          //     {record.issueNumber + "-" + record.title}
-          //     <div class="row">
-          //       <div class="column">
-          //         <img src={SilverSurfer}></img>
-          //       </div>
-          //     </div>
-          //   </li>
-        )
-      })}
-    </ul>
+    // Might remove the [0]
+    // <img src={SilverSurfer}></img>
+    <div class="row">
+      <div class="column">
+        <ul>
+          {marvelData.map((record, index) => {
+            return (
+              <li>
+                <p>{record.title}</p>
+                <img src={record.thumbnail.path + ".jpg"}></img>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    </div>
   )
 }
 
